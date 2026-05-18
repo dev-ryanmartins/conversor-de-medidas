@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Iniciar conversor",
+      "type": "shell",
+      "command": "npm run dev",
+      "problemMatcher": [],
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Gerar build do conversor",
+      "type": "shell",
+      "command": "npm run build",
+      "problemMatcher": ["$tsc"]
+    }
+  ]
+}
