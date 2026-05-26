@@ -1,4 +1,4 @@
-export type UnitCategory = "temperature" | "length" | "weight" | "speed" | "currency";
+export type UnitCategory = "temperature" | "length" | "weight" | "speed" | "volume" | "currency";
 
 export interface UnitInfo {
   id: string;
@@ -35,6 +35,12 @@ export const CATEGORIES: Record<UnitCategory, UnitInfo[]> = {
     { id: "mph", name: "Milhas por hora", symbol: "mph" },
     { id: "knots", name: "Nós", symbol: "kn" },
   ],
+  volume: [
+    { id: "liters", name: "Litros", symbol: "L" },
+    { id: "milliliters", name: "Mililitros", symbol: "mL" },
+    { id: "cubicMeters", name: "Metros cubicos", symbol: "m3" },
+    { id: "gallons", name: "Galoes", symbol: "gal" },
+  ],
   currency: [
     { id: "brl", name: "Real Brasileiro", symbol: "R$" },
     { id: "usd", name: "Dólar Americano", symbol: "US$" },
@@ -69,6 +75,13 @@ const speedToKmh: Record<string, number> = {
   ms: 3.6,
   mph: 1.60934,
   knots: 1.852,
+};
+
+const volumeToLiters: Record<string, number> = {
+  liters: 1,
+  milliliters: 0.001,
+  cubicMeters: 1000,
+  gallons: 3.78541,
 };
 
 const currencyToUsd: Record<string, number> = {
@@ -109,6 +122,11 @@ export function convertValue(value: number, fromUnit: string, toUnit: string, ca
   if (category === "speed") {
     const baseValue = value * speedToKmh[fromUnit];
     return baseValue / speedToKmh[toUnit];
+  }
+
+  if (category === "volume") {
+    const baseValue = value * volumeToLiters[fromUnit];
+    return baseValue / volumeToLiters[toUnit];
   }
 
   if (category === "currency") {

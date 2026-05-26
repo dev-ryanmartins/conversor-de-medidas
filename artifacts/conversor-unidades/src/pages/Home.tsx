@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Thermometer, Ruler, Scale, Gauge, Coins } from "lucide-react";
+import { Thermometer, Ruler, Scale, Gauge, Droplets, Coins } from "lucide-react";
 import Converter from "@/components/Converter";
 import { UnitCategory } from "@/lib/conversions";
 
@@ -9,6 +9,7 @@ const tabs = [
   { id: "length" as UnitCategory, label: "Comprimento", icon: Ruler },
   { id: "weight" as UnitCategory, label: "Peso", icon: Scale },
   { id: "speed" as UnitCategory, label: "Velocidade", icon: Gauge },
+  { id: "volume" as UnitCategory, label: "Volume", icon: Droplets },
   { id: "currency" as UnitCategory, label: "Moeda", icon: Coins },
 ];
 
